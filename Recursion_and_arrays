@@ -1,3 +1,29 @@
+---------------------------------------------------CHECKING IF THE ARRAY IS SORTED USING RECURSION---------------------------------------------------------------------------
+
+bool isSorted2(int arr[], int size)
+{
+  if( size==0 || size==1 )
+  {
+    return true;
+  }
+  
+  int isSmallSorted = isSorted2(arr+1, size-1);
+  if(!isSmallSorted)
+  {
+    return false;
+  }
+ 
+  if( arr[0] > arr[1] )
+  {
+    return false;
+  }
+  else
+  {
+    return true;
+  }
+}
+  
+
 bool isSorted(int arr[], int size)
 {
   if(size==0 || size==1)
@@ -10,5 +36,6 @@ bool isSorted(int arr[], int size)
     return false;
   } 
   
-  bool isSmallSorted = isSorted(arr+1, size-1)
-  
+  bool isSmallSorted = isSorted(arr+1, size-1);
+  return isSmallSorted;
+}
