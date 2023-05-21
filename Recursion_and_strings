@@ -1,0 +1,39 @@
+#include<iostream>
+using namespace std;
+
+
+void removeA(char arr[]){     //Removal of all instances of 'a'   
+    if(arr[0]=='\0'){
+        return;
+    }
+    
+    if(arr[0]!='a'){
+        removeA(arr+1);
+    }
+    else{
+        int i=1;
+        for( ; arr[i]!='\0'; i++){
+            arr[i-1]=arr[i];
+        }
+        arr[i-1]=arr[i];
+        removeA(arr);          //There may be continuous a's 
+    }
+}
+
+int length(char arr[]){       //calculating the length of the string recursively
+    if(arr[0]=='\0'){
+        return 0;
+    }
+    int small=length(arr+1);
+    return 1+small;
+}
+
+int main(){
+    char arr[100];
+    cin>>arr;
+    
+    int len=length(arr);
+    cout<<len<<endl;
+    removeA(arr);
+    cout<<arr<<endl;
+}
